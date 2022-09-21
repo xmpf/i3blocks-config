@@ -1,0 +1,45 @@
+align=center
+separator=false
+color=#ffffff
+separator_block_width=8
+markup=pango
+
+[ip]
+interval=once
+command=curl -s https://am.i.mullvad.net/ip
+color=#f5e042
+label=IP: 
+signal=8
+
+[volume]
+label=Vol:
+command=amixer get Master | grep -oE '[0-9]+%'
+instance=Master
+interval=once
+signal=10
+
+[temperature]
+command=./tools/cpu_temperature.sh
+interval=5
+label=<span color="#f01010">☼ </span>
+
+[battery]
+command=./tools/battery_percentage.sh
+interval=2
+label=<span color="#10cc10">⚕</span>
+
+[time]
+TZ=Europe/Athens
+command=/bin/date '+%I:%M %d/%m %A'
+interval=2
+label=<span color="#ffb86c"> </span>
+
+[caps-lock]
+command=./tools/caps-lock.sh
+interval=once
+signal=10
+
+[num-lock]
+command=./tools/num-lock.sh
+interval=once
+signal=11
