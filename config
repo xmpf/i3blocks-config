@@ -1,32 +1,43 @@
 align=center
-separator=false
+full_text=|
+separator=true
 color=#ffffff
 separator_block_width=8
 markup=pango
 
 [ip]
 interval=once
-command=curl -s https://am.i.mullvad.net/ip
+command=/usr/bin/curl -s https://am.i.mullvad.net/ip
 color=#f5e042
 label=IP: 
 signal=8
 
+[separator]
+
 [volume]
 label=Vol:
-command=amixer get Master | grep -oE '[0-9]+%'
-instance=Master
+command=/usr/bin/pactl get-sink-volume 0 | grep -oE '[0-9]+%'
+color=#ff22ffdd
 interval=once
 signal=10
 
+[separator]
+
 [temperature]
-command=./tools/cpu_temperature.sh
+command=$XDG_CONFIG_HOME/i3blocks/tools/cpu_temperature.sh
 interval=5
-label=<span color="#f01010">☼ </span>
+color=#f01010
+label=<b>☼</b> 
+
+[separator]
 
 [battery]
-command=./tools/battery_percentage.sh
+command=$XDG_CONFIG_HOME/i3blocks/tools/battery_percentage.sh
 interval=2
-label=<span color="#10cc10">⚕</span>
+color=#10cc10
+label=<b>⚕</b>
+
+[separator]
 
 [time]
 TZ=Europe/Athens
@@ -34,12 +45,14 @@ command=/bin/date '+%I:%M %d/%m %A'
 interval=2
 label=<span color="#ffb86c"> </span>
 
+[separator]
+
 [caps-lock]
-command=./tools/caps-lock.sh
+command=$XDG_CONFIG_HOME/i3blocks/tools/caps-lock.sh
 interval=once
 signal=10
 
-[num-lock]
-command=./tools/num-lock.sh
+  [num-lock]
+command=$XDG_CONFIG_HOME/i3blocks/tools/num-lock.sh
 interval=once
 signal=11
