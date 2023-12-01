@@ -1,24 +1,24 @@
 align=center
-full_text=|
+full_text=<b>|</b>
 separator=true
 color=#ffffff
 separator_block_width=8
 markup=pango
 
 [ip]
-interval=once
 command=/usr/bin/curl -s https://am.i.mullvad.net/ip
+interval=once
 color=#f5e042
-label=IP: 
+label=<b>IP:</b> 
 signal=8
 
 [separator]
 
 [volume]
-label=Vol:
 command=/usr/bin/pactl get-sink-volume 0 | grep -oE '[0-9]+%'
-color=#ff22ffdd
+color=#f010ff
 interval=once
+label=<b>Vol:</b>
 signal=10
 
 [separator]
@@ -27,7 +27,16 @@ signal=10
 command=$XDG_CONFIG_HOME/i3blocks/tools/cpu_temperature.sh
 interval=5
 color=#f01010
-label=<b>☼</b> 
+label=<b>TEMP:</b> 
+
+[separator]
+
+[brightness]
+command=/usr/bin/light -G
+interval=once
+color=#a0a0ff
+label=<b>LGHT:</b> 
+signal=10
 
 [separator]
 
@@ -35,7 +44,7 @@ label=<b>☼</b>
 command=$XDG_CONFIG_HOME/i3blocks/tools/battery_percentage.sh
 interval=2
 color=#10cc10
-label=<b>⚕</b>
+label=<b>PWR:</b>
 
 [separator]
 
@@ -43,6 +52,7 @@ label=<b>⚕</b>
 TZ=Europe/Athens
 command=/bin/date '+%I:%M %d/%m %A'
 interval=2
+color=#fdb49f
 label=<span color="#ffb86c"> </span>
 
 [separator]
@@ -52,7 +62,7 @@ command=$XDG_CONFIG_HOME/i3blocks/tools/caps-lock.sh
 interval=once
 signal=10
 
-  [num-lock]
+[num-lock]
 command=$XDG_CONFIG_HOME/i3blocks/tools/num-lock.sh
 interval=once
 signal=11
